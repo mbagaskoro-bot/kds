@@ -42,7 +42,7 @@ export async function POST(req: Request) {
             ${context}
             END OF CONTEXT BLOCK
             You will not invent anything that is not drawn directly from the context.
-            You will not answer if the answer not have within the context pdf`,
+            `,
         }
 
         const response = await openai.createChatCompletion({
