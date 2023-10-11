@@ -1,113 +1,399 @@
-import Image from 'next/image'
+import { Button } from "@/components/ui/button"
+import { UserButton, auth } from "@clerk/nextjs"
+import Link from "next/link"
+import { LogIn } from "lucide-react"
+import FileUpload from "@/components/fileUpload"
+import { db } from "@/lib/db"
+import { chats } from "@/lib/db/schema"
+import { eq } from "drizzle-orm"
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+export default async function Home() {
+    const { userId } = await auth()
+    const isAuth = !!userId
+    let firstChat
+    if (userId) {
+        firstChat = await db
+            .select()
+            .from(chats)
+            .where(eq(chats.userId, userId))
+        if (firstChat) {
+            firstChat = firstChat[0]
+        }
+    }
+    return (
+        <div className="w-screen min-h-screen bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-neutral-300 via-cyan-100 to-orange-500">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                <div className="flex flex-col items-center text-center">
+                    <div className="flex items-center">
+                        <h1 className="text-7xl font-bold mr-3 text-slate-900">
+                            Knowledge Discovery System
+                        </h1>
+                        <svg
+                            width="100%"
+                            height="100%"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="xMidYMid slice"
+                            className="rounded-xl shadow-white shadow-[3px_5px_50px_-10px_rgba(0,0,0,0.3)]"
+                        >
+                            <defs>
+                                <radialGradient
+                                    id="Gradient1"
+                                    cx="50%"
+                                    cy="50%"
+                                    fx="0.441602%"
+                                    fy="50%"
+                                    r=".5"
+                                >
+                                    <animate
+                                        attributeName="fx"
+                                        dur="54s"
+                                        values="0%;3%;0%"
+                                        repeatCount="indefinite"
+                                    ></animate>
+                                    <stop
+                                        offset="0%"
+                                        stop-color="rgba(255, 0, 255, 1)"
+                                    ></stop>
+                                    <stop
+                                        offset="100%"
+                                        stop-color="rgba(255, 0, 255, 0)"
+                                    ></stop>
+                                </radialGradient>
+                                <radialGradient
+                                    id="Gradient2"
+                                    cx="50%"
+                                    cy="50%"
+                                    fx="2.68147%"
+                                    fy="50%"
+                                    r=".5"
+                                >
+                                    <animate
+                                        attributeName="fx"
+                                        dur="43.5s"
+                                        values="0%;3%;0%"
+                                        repeatCount="indefinite"
+                                    ></animate>
+                                    <stop
+                                        offset="0%"
+                                        stop-color="rgba(255, 255, 0, 1)"
+                                    ></stop>
+                                    <stop
+                                        offset="100%"
+                                        stop-color="rgba(255, 255, 0, 0)"
+                                    ></stop>
+                                </radialGradient>
+                                <radialGradient
+                                    id="Gradient3"
+                                    cx="50%"
+                                    cy="50%"
+                                    fx="0.836536%"
+                                    fy="50%"
+                                    r=".5"
+                                >
+                                    <animate
+                                        attributeName="fx"
+                                        dur="41.5s"
+                                        values="0%;3%;0%"
+                                        repeatCount="indefinite"
+                                    ></animate>
+                                    <stop
+                                        offset="0%"
+                                        stop-color="rgba(0, 255, 255, 1)"
+                                    ></stop>
+                                    <stop
+                                        offset="100%"
+                                        stop-color="rgba(0, 255, 255, 0)"
+                                    ></stop>
+                                </radialGradient>
+                                <radialGradient
+                                    id="Gradient4"
+                                    cx="50%"
+                                    cy="50%"
+                                    fx="4.56417%"
+                                    fy="50%"
+                                    r=".5"
+                                >
+                                    <animate
+                                        attributeName="fx"
+                                        dur="43s"
+                                        values="0%;5%;0%"
+                                        repeatCount="indefinite"
+                                    ></animate>
+                                    <stop
+                                        offset="0%"
+                                        stop-color="rgba(0, 255, 0, 1)"
+                                    ></stop>
+                                    <stop
+                                        offset="100%"
+                                        stop-color="rgba(0, 255, 0, 0)"
+                                    ></stop>
+                                </radialGradient>
+                                <radialGradient
+                                    id="Gradient5"
+                                    cx="50%"
+                                    cy="50%"
+                                    fx="2.65405%"
+                                    fy="50%"
+                                    r=".5"
+                                >
+                                    <animate
+                                        attributeName="fx"
+                                        dur="44.5s"
+                                        values="0%;5%;0%"
+                                        repeatCount="indefinite"
+                                    ></animate>
+                                    <stop
+                                        offset="0%"
+                                        stop-color="rgba(0,0,255, 1)"
+                                    ></stop>
+                                    <stop
+                                        offset="100%"
+                                        stop-color="rgba(0,0,255, 0)"
+                                    ></stop>
+                                </radialGradient>
+                                <radialGradient
+                                    id="Gradient6"
+                                    cx="50%"
+                                    cy="50%"
+                                    fx="0.981338%"
+                                    fy="50%"
+                                    r=".5"
+                                >
+                                    <animate
+                                        attributeName="fx"
+                                        dur="45.5s"
+                                        values="0%;5%;0%"
+                                        repeatCount="indefinite"
+                                    ></animate>
+                                    <stop
+                                        offset="0%"
+                                        stop-color="rgba(255,0,0, 1)"
+                                    ></stop>
+                                    <stop
+                                        offset="100%"
+                                        stop-color="rgba(255,0,0, 0)"
+                                    ></stop>
+                                </radialGradient>
+                            </defs>
+                            <rect
+                                x="0"
+                                y="0"
+                                width="100%"
+                                height="100%"
+                                fill="url(#Gradient4)"
+                            >
+                                <animate
+                                    attributeName="x"
+                                    dur="40s"
+                                    values="25%;0%;25%"
+                                    repeatCount="indefinite"
+                                />
+                                <animate
+                                    attributeName="y"
+                                    dur="41s"
+                                    values="0%;25%;0%"
+                                    repeatCount="indefinite"
+                                />
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="0 50 50"
+                                    to="360 50 50"
+                                    dur="37s"
+                                    repeatCount="indefinite"
+                                />
+                            </rect>
+                            <rect
+                                x="0"
+                                y="0"
+                                width="100%"
+                                height="100%"
+                                fill="url(#Gradient5)"
+                            >
+                                <animate
+                                    attributeName="x"
+                                    dur="43s"
+                                    values="0%;-25%;0%"
+                                    repeatCount="indefinite"
+                                />
+                                <animate
+                                    attributeName="y"
+                                    dur="44s"
+                                    values="25%;-25%;25%"
+                                    repeatCount="indefinite"
+                                />
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="0 50 50"
+                                    to="360 50 50"
+                                    dur="38s"
+                                    repeatCount="indefinite"
+                                />
+                            </rect>
+                            <rect
+                                x="0"
+                                y="0"
+                                width="100%"
+                                height="100%"
+                                fill="url(#Gradient6)"
+                            >
+                                <animate
+                                    attributeName="x"
+                                    dur="45s"
+                                    values="-25%;0%;-25%"
+                                    repeatCount="indefinite"
+                                />
+                                <animate
+                                    attributeName="y"
+                                    dur="46s"
+                                    values="0%;-25%;0%"
+                                    repeatCount="indefinite"
+                                />
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="360 50 50"
+                                    to="0 50 50"
+                                    dur="39s"
+                                    repeatCount="indefinite"
+                                />
+                            </rect>
+                            <rect
+                                x="13.744%"
+                                y="1.18473%"
+                                width="100%"
+                                height="100%"
+                                fill="url(#Gradient1)"
+                                transform="rotate(334.41 50 50)"
+                            >
+                                <animate
+                                    attributeName="x"
+                                    dur="40s"
+                                    values="25%;0%;25%"
+                                    repeatCount="indefinite"
+                                ></animate>
+                                <animate
+                                    attributeName="y"
+                                    dur="41s"
+                                    values="0%;25%;0%"
+                                    repeatCount="indefinite"
+                                ></animate>
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="0 50 50"
+                                    to="360 50 50"
+                                    dur="27s"
+                                    repeatCount="indefinite"
+                                ></animateTransform>
+                            </rect>
+                            <rect
+                                x="-2.17916%"
+                                y="35.4267%"
+                                width="100%"
+                                height="100%"
+                                fill="url(#Gradient2)"
+                                transform="rotate(255.072 50 50)"
+                            >
+                                <animate
+                                    attributeName="x"
+                                    dur="43s"
+                                    values="-25%;0%;-25%"
+                                    repeatCount="indefinite"
+                                ></animate>
+                                <animate
+                                    attributeName="y"
+                                    dur="44s"
+                                    values="0%;50%;0%"
+                                    repeatCount="indefinite"
+                                ></animate>
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="0 50 50"
+                                    to="360 50 50"
+                                    dur="32s"
+                                    repeatCount="indefinite"
+                                ></animateTransform>
+                            </rect>
+                            <rect
+                                x="9.00483%"
+                                y="14.5733%"
+                                width="100%"
+                                height="100%"
+                                fill="url(#Gradient3)"
+                                transform="rotate(139.903 50 50)"
+                            >
+                                <animate
+                                    attributeName="x"
+                                    dur="45s"
+                                    values="0%;25%;0%"
+                                    repeatCount="indefinite"
+                                ></animate>
+                                <animate
+                                    attributeName="y"
+                                    dur="12s"
+                                    values="0%;25%;0%"
+                                    repeatCount="indefinite"
+                                ></animate>
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="360 50 50"
+                                    to="0 50 50"
+                                    dur="9s"
+                                    repeatCount="indefinite"
+                                ></animateTransform>
+                            </rect>
+                        </svg>
+                    </div>
+                    <p className="max-w-2xl mt-10 text-slate-800 text-xl">
+                        "Welcome to Space literacy Learning, where interactive
+                        education leads you to a galaxy of literacy knowledge
+                        waiting to be discovere"
+                    </p>
+                    <div className="flex mt-6">
+                        {isAuth && firstChat && (
+                            <Link href={`/chat/${firstChat.id}`}>
+                                <Button className="border border-white bg-orange-600 hover:bg-orange-400 hover:duration-500 hover:ease-in-out">
+                                    Go to Your Space
+                                </Button>
+                            </Link>
+                        )}
+                        <div>
+                            {isAuth ? (
+                                <div className="flex border-2 rounded-xl ml-5 pr-2 items-center border-orange-600 ">
+                                    <div className="p-0.5 items-center ">
+                                        <UserButton afterSignOutUrl="/" />
+                                    </div>
+                                    <div className="flex flex-col space-y-0">
+                                        <div className="text-[10px] text-slate-800">
+                                            Your
+                                        </div>
+                                        <div className="text-[10px] -mt-1 text-slate-800">
+                                            Account
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link href="/sign-in"></Link>
+                            )}
+                        </div>
+                    </div>
+                    <div className="w-[80vh] mt-4">
+                        {isAuth ? (
+                            <FileUpload />
+                        ) : (
+                            <Link href="/sign-in">
+                                <Button className="p-8 border border-white bg-orange-600 hover:bg-orange-400 hover:duration-500 rounded-2xl shadow-xl">
+                                    Start | Your Learning Space
+                                </Button>
+                            </Link>
+                        )}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    )
 }
