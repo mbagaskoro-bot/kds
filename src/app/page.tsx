@@ -349,9 +349,9 @@ export default async function Home() {
                         </svg>
                     </div>
                     <p className="max-w-2xl mt-10 text-slate-800 text-xl">
-                        "Welcome to Space literacy Learning, where interactive
+                        Welcome to Space literacy Learning, where interactive
                         education leads you to a galaxy of literacy knowledge
-                        waiting to be discovere"
+                        waiting to be discovere
                     </p>
                     <div className="flex mt-6">
                         {isAuth && firstChat && (
