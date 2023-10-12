@@ -34,7 +34,7 @@ const ChatAI = (props: Props) => {
             <div className="sticky bottom-0 h-[31vh] inset-x-0">
                 <div className="flex justify-center items-center mt-20">
                     <div className="block max-w-sm  p-6 relative">
-                        <h5 className="mb-2 text-4xl text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-lime-400 font-bold text-center sm:text-3xl md:text-3xl">
+                        <h5 className="mb-2 text-3xl text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-lime-400 font-bold text-center">
                             CHAT TO EXPLORE YOUR CURIOSITY
                         </h5>
                     </div>
