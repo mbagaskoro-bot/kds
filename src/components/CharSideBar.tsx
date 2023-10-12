@@ -40,20 +40,19 @@ const CharSideBar = ({ chats, chatId }: Props) => {
                         </div>
                     </Link>
                 ))}
-            </div>
-
-            <div className="absolute bottom-4 left-4">
-                <div className="flex items-center gap-2 text-sm text-slate-500 flex-wrap ">
-                    <Link
-                        href="/"
-                        className="text-[12px] py-1 px-4 rounded-lg bg-gradient-to-r from-teal-200 to-lime-200  text-black font-semibold shadow-inner shadow-white"
-                    >
-                        Home
-                    </Link>
-                    <p className="flex text-white font-extralight text-[12px]">
-                        | Create with ❤️ by WoT Team
-                    </p>
-                    {/* Stripe Button */}
+                <div className="absolute bottom-4 left-4">
+                    <div className="flex items-center gap-2 text-sm text-slate-500 flex-wrap ">
+                        <Link
+                            href="/"
+                            className="text-[12px] py-1 px-4 rounded-lg bg-gradient-to-r from-teal-200 to-lime-200  text-black font-semibold shadow-inner shadow-white"
+                        >
+                            Home
+                        </Link>
+                        <p className="flex text-white font-extralight text-[12px]">
+                            | Create with ❤️ by WoT Team
+                        </p>
+                        {/* Stripe Button */}
+                    </div>
                 </div>
             </div>
         </div>
