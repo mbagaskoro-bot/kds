@@ -12,10 +12,22 @@ type Props = {
 }
 
 const CharSideBar = ({ chats, chatId }: Props) => {
+    React.useEffect(() => {
+        const messageContainer = document.getElementById("chat-container")
+        if (messageContainer) {
+            messageContainer.scrollTo({
+                top: messageContainer.scrollHeight,
+                behavior: "smooth",
+            })
+        }
+    }, [chatId])
     return (
-        <div className="lg:w-[260px] h-[98vh] sm:w-[100px] p-2 text-gray-200 bg-slate-800 rounded-xl mt-2 mb-1.5 ml-1.5 relative overflow-scroll">
+        <div
+            className="lg:w-[260px] h-[98vh] sm:w-[100px] p-2 text-gray-200 bg-slate-800 rounded-xl mt-2 mb-1.5 ml-1.5 relative overflow-scroll"
+            id="chat-container"
+        >
             <Link href="/">
-                <Button className="w-full border-dashed border-white border bg-slate-700 text-[12px]">
+                <Button className="w-full py-2 border-dashed border-white border bg-slate-700 text-[12px] sticky top-0">
                     <PlusCircle className="mr-2 w-4 h-4" /> New Literature
                 </Button>
             </Link>
@@ -40,7 +52,7 @@ const CharSideBar = ({ chats, chatId }: Props) => {
                         </div>
                     </Link>
                 ))}
-                <div className="absolute bottom-4 left-4">
+                <div className="sticky bottom-2 left-4 mt-2 sm:mt-2">
                     <div className="flex items-center text-sm text-slate-500 flex-wrap ">
                         <Link
                             href="/"
