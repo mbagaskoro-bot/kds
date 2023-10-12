@@ -13,7 +13,7 @@ type Props = {
 
 const CharSideBar = ({ chats, chatId }: Props) => {
     return (
-        <div className="w-[260px] h-[98vh] p-2 text-gray-200 bg-slate-800 rounded-xl mt-2 mb-1.5 ml-1.5 relative">
+        <div className="lg:w-[260px] h-[98vh] sm:w-[100px] p-2 text-gray-200 bg-slate-800 rounded-xl mt-2 mb-1.5 ml-1.5 relative">
             <Link href="/">
                 <Button className="w-full border-dashed border-white border bg-slate-700 text-[12px]">
                     <PlusCircle className="mr-2 w-4 h-4" /> New Literature
