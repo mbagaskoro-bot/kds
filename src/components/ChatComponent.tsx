@@ -48,7 +48,7 @@ const ChatComponent = ({ chatId }: Props) => {
             <div className="sticky bottom-0 h-[31vh] inset-x-0 ">
                 <div className="flex justify-center items-center mt-20">
                     <div className="block max-w-xs  p-6 relative">
-                        <h5 className="mb-2 text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-400 font-bold text-center">
+                        <h5 className="mb-2 text-4xl sm:text-3xl  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-400 font-bold text-center">
                             CHAT TO YOUR LITERATURE
                         </h5>
                     </div>
