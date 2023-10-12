@@ -52,7 +52,7 @@ const ChatAI = (props: Props) => {
 
             <form
                 onSubmit={handleSubmit}
-                className="sticky bottom-0 inset-x-0 px-2 mt-1 py-2 bg-white"
+                className="sticky bottom-0 inset-x-0 px-2 mt-1 pb-1 bg-white"
             >
                 <div className="flex">
                     <Input
