@@ -48,7 +48,7 @@ export async function POST(req: Request) {
         }
 
         const response = await openai.createChatCompletion({
-            model: "gpt-4-1106-preview",
+            model: "gpt-4",
             //this for chatbox -> messages,
             messages: [
                 prompt,
