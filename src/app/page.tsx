@@ -25,8 +25,8 @@ export default async function Home() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
                 <div className="flex flex-col items-center text-center">
                     <div className="flex items-center">
-                        <h1 className="text-7xl font-bold mr-3 text-slate-900">
-                            Knowledge Discovery System
+                        <h1 className="text-4xl font-bold mr-3 text-slate-900">
+                            Learning Partner Recommendation System
                         </h1>
                         <svg
                             width="100%"
