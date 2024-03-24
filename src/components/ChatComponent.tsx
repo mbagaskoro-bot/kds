@@ -41,7 +41,7 @@ const ChatComponent = ({ chatId }: Props) => {
     }, [messages])
     return (
         <div
-            className="relative max-h-[100vh] overflow-scroll rounded-xl"
+            className="relative max-h-[49vh] overflow-scroll rounded-xl"
             id="message-container"
         >
             {/* header */}
@@ -105,14 +105,15 @@ const ChatComponent = ({ chatId }: Props) => {
 
             <form
                 onSubmit={handleSubmit}
-                className="sticky bottom-0 inset-x-0 px-2 mt-1 py-2 bg-slate-800"
+                className="sticky bottom-0 inset-x-0 px-2 mt-1 py-2 bg-slate-800
+                "
             >
                 <div className="flex">
                     <Input
                         value={input}
                         onChange={handleInputChange}
                         placeholder="Questions to literature 📖"
-                        className="w-full mb-4 bg-slate-300"
+                        className="w-full bg-slate-300"
                     ></Input>
 
                     <Button className="bg-gradient-to-r from-yellow-400 to-orange-400 ml-2">

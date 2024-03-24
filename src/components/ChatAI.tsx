@@ -41,7 +41,7 @@ const ChatAI = (props: Props) => {
                 </div>
 
                 <div className="flex justify-center items-center mt-4">
-                    <div className="block max-w-sm relative animate-bounce p-2 rounded-full shadow-md shadow-teal-400">
+                    <div className="block max-w-sm relative animate-bounce p-2 rounded-full shadow-md shadow-teal-400 bg-white">
                         <ChevronsDown />
                     </div>
                 </div>
@@ -52,14 +52,14 @@ const ChatAI = (props: Props) => {
 
             <form
                 onSubmit={handleSubmit}
-                className="sticky bottom-0 inset-x-0 px-2 mt-1 py-2 bg-white"
+                className="sticky bottom-0 inset-x-0 px-2 mt-1 py-2 bg-slate-800"
             >
                 <div className="flex">
                     <Input
                         value={input}
                         onChange={handleInputChange}
                         placeholder="Explore your curiosity ✨"
-                        className="w-full mb-2"
+                        className="w-full mb-2 bg-slate-300"
                     ></Input>
 
                     <Button className="bg-gradient-to-r from-teal-200 to-lime-200 ml-2">

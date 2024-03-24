@@ -43,12 +43,12 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
                 </div>
                 {/* chat component */}
                 <div className="flex-[3] justify-center">
-                    <div className="bg-slate-800 mt-2 mr-2 rounded-xl h-[98vh] overflow-hidden ">
+                    <div className="border-1-4 border-orange-300 border-2 bg-slate-800 mt-2 mr-2 rounded-xl h-[49vh] overflow-hidden ">
                         <ChatComponent chatId={parseInt(chatId)} />
                     </div>
-                    {/* <div className=" border-1-4 border-teal-300 border-2 mt-2 mr-2 rounded-xl h-[49vh] overflow-hidden ">
+                    <div className=" border-1-4 border-teal-300 border-2 bg-slate-800 mt-2 mr-2 rounded-xl h-[49vh] overflow-hidden ">
                         <ChatAI />
-                    </div> */}
+                    </div>
                 </div>
 
                 {/* chatbox */}

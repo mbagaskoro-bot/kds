@@ -26,7 +26,7 @@ export default async function Home() {
                 <div className="flex flex-col items-center text-center">
                     <div className="flex items-center">
                         <h1 className="text-5xl font-bold mr-3 text-slate-900">
-                            Retrieval Augmented Generation (RAG)
+                            Knowledge Discovery System (KDS)
                         </h1>
                         <svg
                             width="100%"

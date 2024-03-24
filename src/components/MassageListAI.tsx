@@ -18,12 +18,12 @@ const MassageListAI = ({ messages }: Props) => {
                         key={message.id}
                         className={cn("flex", {
                             "justify-end pl-10": message.role === "user",
-                            "justify-start pr-10": message.role === "assistant",
+                            "justify-start": message.role === "assistant",
                         })}
                     >
                         <div
                             className={cn(
-                                "rounded-lg px-3 text-sm py-1 shadow-md ring-1 ring-gray-900/10",
+                                "rounded-lg px-1 text-slate-200 text-sm py-1",
                                 {
                                     "bg-lime-200 border text-black":
                                         message.role === "user",
